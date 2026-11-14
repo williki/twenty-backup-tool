@@ -2,6 +2,12 @@
 
 Backup and restore [TwentyCRM](https://twenty.com) data via the API. Exports your full schema (custom objects, custom fields) and all records to a JSON file, and can replay that backup into a fresh instance.
 
+## Why not just back up the database?
+
+A full Postgres dump of the Twenty database is still a good idea, but it does not help when a Twenty update fails mid-migration. The dump is tied to the old schema version, so restoring it only takes you back to the broken starting point. This tool exports your data at the API level, independent of the internal schema, so you can restore it into a fresh, working instance of any version.
+
+The built-in alternative is Twenty's CSV export. It works object by object, has to be done manually, and captures far less: no schema definitions, no custom field settings, and no preserved record IDs, so relations between records are lost. This tool backs up the full schema and all records in one run.
+
 ## What gets backed up
 
 | Data                    | Backed up | Notes                                        |
