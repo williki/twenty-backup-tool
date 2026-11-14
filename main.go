@@ -7,7 +7,8 @@ import (
 	"time"
 )
 
-const version = "0.1.0"
+// version is overridden at release time via -ldflags "-X main.version=...".
+var version = "dev"
 
 func usage() {
 	fmt.Fprintf(os.Stderr, `twenty-backup %s — backup and restore TwentyCRM data via API
